@@ -1,24 +1,46 @@
-import 'package:kartikay_s_application7/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:kartikay_s_application7/widgets/custom_text_form_field.dart';
 import 'package:kartikay_s_application7/core/app_export.dart';
+import 'package:kartikay_s_application7/presentation/android_large_six_screen/android_large_six_screen.dart';
 
 class AndroidLargeOneScreen extends StatelessWidget {
-  AndroidLargeOneScreen({Key? key})
-      : super(
-          key: key,
-        );
+  AndroidLargeOneScreen({Key? key}) : super(key: key);
 
   TextEditingController userNameController = TextEditingController();
-
   TextEditingController emailController = TextEditingController();
-
+  TextEditingController passwordController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
-
   TextEditingController addressController = TextEditingController();
-
   TextEditingController ageController = TextEditingController();
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  Future<void> _signUp(BuildContext context) async {
+    try {
+      await FirebaseFirestore.instance.collection('users').add({
+        'userName': userNameController.text,
+        'email': emailController.text,
+        'password': passwordController.text,
+        'phone': phoneController.text,
+        'address': addressController.text,
+        'age': int.tryParse(ageController.text) ?? 0,
+      });
+
+      // Navigate to the next screen
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => AndroidLargeSixScreen()),
+      );
+    } catch (e) {
+      // Handle sign-up errors
+      print('Failed to sign up: $e');
+      // Show error message to the user
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to sign up')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +70,7 @@ class AndroidLargeOneScreen extends StatelessWidget {
               child: Container(
                 width: double.maxFinite,
                 padding: EdgeInsets.symmetric(
-                  horizontal: 9.h,
+                  horizontal: 2.h,
                   vertical: 13.v,
                 ),
                 child: Column(
@@ -56,49 +78,15 @@ class AndroidLargeOneScreen extends StatelessWidget {
                   children: [
                     SizedBox(height: 60.v),
                     _buildUserName(context),
-                    SizedBox(height: 84.v),
+                    SizedBox(height: 24.v),
                     _buildEmail(context),
-                    SizedBox(height: 82.v),
+                    SizedBox(height: 24.v),
+                    _buildPassword(context),
+                    SizedBox(height: 24.v),
                     _buildPhone(context),
-                    SizedBox(height: 77.v),
+                    SizedBox(height: 24.v),
                     _buildAddress(context),
-                    SizedBox(height: 72.v),
-                    Container(
-                      margin: EdgeInsets.symmetric(horizontal: 46.h),
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 14.h,
-                        vertical: 6.v,
-                      ),
-                      decoration: AppDecoration.fillPrimary.copyWith(
-                        borderRadius: BorderRadiusStyle.roundedBorder21,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(
-                              top: 5.v,
-                              bottom: 1.v,
-                            ),
-                            child: Text(
-                              "Birth Date",
-                              style: theme.textTheme.titleLarge,
-                            ),
-                          ),
-                          CustomImageView(
-                            imagePath: ImageConstant.imgCalendar,
-                            height: 25.v,
-                            width: 29.h,
-                            margin: EdgeInsets.only(
-                              right: 11.h,
-                              bottom: 7.v,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 60.v),
+                    SizedBox(height: 24.v),
                     _buildAge(context),
                     SizedBox(height: 27.v),
                     Align(
@@ -111,13 +99,16 @@ class AndroidLargeOneScreen extends StatelessWidget {
                           children: [
                             Align(
                               alignment: Alignment.center,
-                              child: Container(
-                                height: 48.v,
-                                width: 72.h,
-                                decoration: BoxDecoration(
-                                  color: appTheme.gray90001,
-                                  borderRadius: BorderRadius.circular(
-                                    36.h,
+                              child: GestureDetector(
+                                onTap: () => _signUp(context),
+                                child: Container(
+                                  height: 48.v,
+                                  width: 72.h,
+                                  decoration: BoxDecoration(
+                                    color: appTheme.gray90001,
+                                    borderRadius: BorderRadius.circular(
+                                      36.h,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -172,6 +163,22 @@ class AndroidLargeOneScreen extends StatelessWidget {
         controller: emailController,
         hintText: "Email id",
         textInputType: TextInputType.emailAddress,
+        alignment: Alignment.centerLeft,
+      ),
+    );
+  }
+
+  /// Section Widget
+  Widget _buildPassword(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(
+        left: 39.h,
+        right: 54.h,
+      ),
+      child: CustomTextFormField(
+        controller: passwordController,
+        hintText: "Password",
+        obscureText: true,
         alignment: Alignment.centerLeft,
       ),
     );

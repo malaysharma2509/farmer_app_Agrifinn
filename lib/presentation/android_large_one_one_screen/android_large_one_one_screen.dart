@@ -3,6 +3,9 @@ import 'package:kartikay_s_application7/core/app_export.dart';
 import 'package:kartikay_s_application7/presentation/android_large_two_screen/android_large_two_screen.dart'; // Import the screen you want to navigate to
 import 'package:kartikay_s_application7/widgets/custom_elevated_button.dart';
 
+import '../android_large_one_screen/android_large_one_screen.dart';
+
+
 class AndroidLargeOneOneScreen extends StatelessWidget {
   const AndroidLargeOneOneScreen({Key? key}) : super(key: key);
 
@@ -14,10 +17,16 @@ class AndroidLargeOneOneScreen extends StatelessWidget {
       ),
     );
   }
-
-  void signUp(BuildContext context) {
-    // Navigate to sign up screen or perform any action you want
+  void loginAsNewUser(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => AndroidLargeOneScreen(), // Navigate to AndroidLargeTwoScreen
+      ),
+    );
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +64,7 @@ class AndroidLargeOneOneScreen extends StatelessWidget {
                 text: "Sign up/Create New Account",
                 margin: EdgeInsets.symmetric(horizontal: 42.h),
                 buttonStyle: CustomButtonStyles.fillBlack,
-                onPressed: () => signUp(context),
+                onPressed: () =>  loginAsNewUser(context), // Replace with actual route name
               ),
               SizedBox(height: 21.v),
               CustomImageView(

@@ -1,10 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart';
 import 'core/app_export.dart';
 
+// Import other plugins as needed
+
 var globalMessengerKey = GlobalKey<ScaffoldMessengerState>();
-void main() {
+Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -12,6 +15,7 @@ void main() {
 
   ///Please update theme as per your need if required.
   ThemeHelper().changeTheme('primary');
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
