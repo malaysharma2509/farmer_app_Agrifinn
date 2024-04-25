@@ -40,6 +40,20 @@ class AppDecoration {
           width: 3.h,
         ),
       );
+  static BoxDecoration get outlineBlack => BoxDecoration(
+    color: appTheme.lime700,
+    border: Border.all(
+      color: appTheme.black900,
+      width: 3.h,
+    ),
+  );
+  static BoxDecoration get outlineBlack900 => BoxDecoration(
+    color: appTheme.lime700,
+    border: Border.all(
+      color: appTheme.black900,
+      width: 1.h,
+    ),
+  );
 }
 
 class BorderRadiusStyle {
@@ -47,7 +61,9 @@ class BorderRadiusStyle {
   static BorderRadius get circleBorder50 => BorderRadius.circular(
         50.h,
       );
-
+  static BorderRadius get roundedBorder27 => BorderRadius.circular(
+    27.h,
+  );
   // Rounded borders
   static BorderRadius get roundedBorder16 => BorderRadius.circular(
         16.h,

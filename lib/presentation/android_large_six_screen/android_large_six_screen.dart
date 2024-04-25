@@ -200,7 +200,7 @@ class AndroidLargeSixScreen extends StatelessWidget {
             '/page3',
             '/page4',
             '/page5',
-            '/page6',
+            '/android_large_three_screen',
           ];
 
           // Example image paths

@@ -6,16 +6,15 @@ import 'package:kartikay_s_application7/core/app_export.dart';
 class AndroidLargeThreeScreen extends StatelessWidget {
   AndroidLargeThreeScreen({Key? key})
       : super(
-          key: key,
-        );
+    key: key,
+  );
 
   TextEditingController adharCardnoController = TextEditingController();
-
   TextEditingController panCardNoController = TextEditingController();
-
   TextEditingController farmidcardController = TextEditingController();
-
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController bankAccountNoController = TextEditingController();
+  TextEditingController landAreaController = TextEditingController();
+  TextEditingController landLocationController = TextEditingController();
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -55,15 +54,17 @@ class AndroidLargeThreeScreen extends StatelessWidget {
                   children: [
                     SizedBox(height: 36.v),
                     _buildAdharCardno(context),
-                    SizedBox(height: 93.v),
+                    SizedBox(height: 20.v),
                     _buildPanCardNo(context),
-                    SizedBox(height: 92.v),
+                    SizedBox(height: 20.v),
                     _buildFarmidcard(context),
+                    SizedBox(height: 20.v),
+                    _buildBankAccountNo(context),
+                    SizedBox(height: 20.v),
+                    _buildLandArea(context),
+                    SizedBox(height: 20.v),
+                    _buildLandLocation(context),
                     SizedBox(height: 88.v),
-                    _buildPassword(context),
-                    SizedBox(height: 88.v),
-                    _buildConfirmPassword(context),
-                    SizedBox(height: 33.v),
                     Align(
                       alignment: Alignment.centerRight,
                       child: SizedBox(
@@ -118,7 +119,7 @@ class AndroidLargeThreeScreen extends StatelessWidget {
       ),
       child: CustomTextFormField(
         controller: adharCardnoController,
-        hintText: "Adhar Card no.",
+        hintText: "Aadhaar Card No.",
         contentPadding: EdgeInsets.symmetric(
           horizontal: 6.h,
           vertical: 9.v,
@@ -136,7 +137,7 @@ class AndroidLargeThreeScreen extends StatelessWidget {
       ),
       child: CustomTextFormField(
         controller: panCardNoController,
-        hintText: "Pan Card No.",
+        hintText: "PAN Card No.",
       ),
     );
   }
@@ -150,43 +151,50 @@ class AndroidLargeThreeScreen extends StatelessWidget {
       ),
       child: CustomTextFormField(
         controller: farmidcardController,
-        hintText: "Farm id card",
+        hintText: "Farm ID Card",
       ),
     );
   }
 
   /// Section Widget
-  Widget _buildPassword(BuildContext context) {
+  Widget _buildBankAccountNo(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
         left: 44.h,
         right: 47.h,
       ),
       child: CustomTextFormField(
-        controller: passwordController,
-        hintText: "Password",
-        textInputAction: TextInputAction.done,
-        textInputType: TextInputType.visiblePassword,
-        obscureText: true,
-        contentPadding: EdgeInsets.symmetric(
-          horizontal: 8.h,
-          vertical: 9.v,
-        ),
+        controller: bankAccountNoController,
+        hintText: "Bank Account No.",
       ),
     );
   }
 
   /// Section Widget
-  Widget _buildConfirmPassword(BuildContext context) {
-    return CustomElevatedButton(
-      height: 44.v,
-      text: "Confirm Password",
-      margin: EdgeInsets.only(
+  Widget _buildLandArea(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(
         left: 44.h,
         right: 47.h,
       ),
-      buttonStyle: CustomButtonStyles.fillPrimary,
-      buttonTextStyle: theme.textTheme.titleLarge!,
+      child: CustomTextFormField(
+        controller: landAreaController,
+        hintText: "Land Area (in acres)",
+      ),
+    );
+  }
+
+  /// Section Widget
+  Widget _buildLandLocation(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(
+        left: 44.h,
+        right: 47.h,
+      ),
+      child: CustomTextFormField(
+        controller: landLocationController,
+        hintText: "Land Location",
+      ),
     );
   }
 }
