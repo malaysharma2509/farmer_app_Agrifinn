@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../presentation/android_large_seven_screen/android_large_seven_screen.dart';
 import '../presentation/android_large_three_screen/android_large_three_screen.dart';
 import '../presentation/android_large_one_one_screen/android_large_one_one_screen.dart';
 import '../presentation/android_large_two_screen/android_large_two_screen.dart';
@@ -6,6 +7,8 @@ import '../presentation/android_large_one_screen/android_large_one_screen.dart';
 import '../presentation/android_large_one_two_screen/android_large_one_two_screen.dart';
 import '../presentation/android_large_six_screen/android_large_six_screen.dart';
 import '../presentation/android_large_five_screen/android_large_five_screen.dart';
+import '../presentation/android_large_eight_screen/android_large_eight_screen.dart'; // Corrected import statement
+import '../presentation/android_largeee_six_screen/android_largeee_six_screen.dart';
 import '../presentation/app_navigation_screen/app_navigation_screen.dart';
 
 class AppRoutes {
@@ -26,6 +29,11 @@ class AppRoutes {
   static const String androidLargeFiveScreen = '/android_large_five_screen';
 
   static const String appNavigationScreen = '/app_navigation_screen';
+  static const String androidLargeEightScreen ='/android_large_eight_screen';
+  static const String  androidLargeSevenScreen ='/android_large_seven_screen';
+  static const String  androidLargeeeSixScreen ='/android_largeee_six_screen';
+
+
 
   static Map<String, WidgetBuilder> routes = {
     androidLargeThreeScreen: (context) => AndroidLargeThreeScreen(),
@@ -35,6 +43,9 @@ class AppRoutes {
     androidLargeOneTwoScreen: (context) => AndroidLargeOneTwoScreen(),
     androidLargeSixScreen: (context) => AndroidLargeSixScreen(),
     androidLargeFiveScreen: (context) => AndroidLargeFiveScreen(),
-    appNavigationScreen: (context) => AppNavigationScreen()
+    appNavigationScreen: (context) => AppNavigationScreen(),
+    androidLargeEightScreen: (context) => AndroidLargeEightScreen(), // No changes needed here
+    androidLargeSevenScreen: (context) => AndroidLargeSevenScreen(),
+    androidLargeeeSixScreen: (context) => AndroidLargeeeSixScreen(),
   };
 }

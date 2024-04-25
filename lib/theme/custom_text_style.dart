@@ -23,6 +23,7 @@ class CustomTextStyles {
       );
   // Title style
   static get titleLargeInriaSerif => theme.textTheme.titleLarge!.inriaSerif;
+  static get headlineLarge_1 => theme.textTheme.headlineLarge!;
 }
 
 extension on TextStyle {
@@ -38,3 +39,4 @@ extension on TextStyle {
     );
   }
 }
+
