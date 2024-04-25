@@ -12,6 +12,7 @@ class AndroidLargeSevenScreen extends StatelessWidget {
   TextEditingController startDateController = TextEditingController();
   TextEditingController endDateController = TextEditingController();
   TextEditingController interestRateController = TextEditingController();
+  TextEditingController reasonController = TextEditingController(); // New controller for reason
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -35,7 +36,7 @@ class AndroidLargeSevenScreen extends StatelessWidget {
                   SizedBox(height: 23.v),
                   CustomTextFormField( // Adjusted width
                     controller: nameController,
-                    hintText: "Farmer’s Name",
+                    hintText: "Farmer's Name",
                     contentPadding: EdgeInsets.symmetric(
                       horizontal: 10.h,
                       vertical: 15.v,
@@ -66,6 +67,11 @@ class AndroidLargeSevenScreen extends StatelessWidget {
                   CustomTextFormField( // Adjusted width
                     controller: interestRateController,
                     hintText: "Interest Rate",
+                  ),
+                  SizedBox(height: 23.v),
+                  CustomTextFormField( // Adjusted width
+                    controller: reasonController,
+                    hintText: "Reason for Issuing Loan", // New text field
                   ),
                   SizedBox(height: 23.v),
                   SizedBox(

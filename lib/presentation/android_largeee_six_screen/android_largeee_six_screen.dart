@@ -5,10 +5,7 @@ import '../../widgets/custom_text_form_field.dart';
 
 // ignore_for_file: must_be_immutable
 class AndroidLargeeeSixScreen extends StatelessWidget {
-  AndroidLargeeeSixScreen({Key? key})
-      : super(
-    key: key,
-  );
+  AndroidLargeeeSixScreen({Key? key}) : super(key: key);
 
   TextEditingController userNameController = TextEditingController();
   TextEditingController farmerRegistrationController = TextEditingController();
@@ -37,20 +34,21 @@ class AndroidLargeeeSixScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     _buildStackDownloadTwenty(context),
+                    SizedBox(height: 24.v),
                     _buildUserName(context),
-                    SizedBox(height: 15.v), // Reduced space between adjacent text fields
+                    SizedBox(height: 24.v),
                     _buildFarmerRegistration(context),
-                    SizedBox(height: 15.v),
+                    SizedBox(height: 24.v),
                     _buildAnnualIncome(context),
-                    SizedBox(height: 15.v),
+                    SizedBox(height: 24.v),
                     _buildTaxIdentification(context),
-                    SizedBox(height: 15.v),
+                    SizedBox(height: 24.v),
                     _buildVoterIdCardOne(context),
-                    SizedBox(height: 15.v),
+                    SizedBox(height: 24.v),
                     _buildDriversLicense(context),
-                    SizedBox(height: 30.v), // Added some space for the submit button
+                    SizedBox(height: 32.v),
                     _buildSubmit(context),
-                    SizedBox(height: 8.v)
+                    SizedBox(height: 24.v)
                   ],
                 ),
               ),
@@ -106,12 +104,6 @@ class AndroidLargeeeSixScreen extends StatelessWidget {
               ),
             ),
           ),
-          CustomImageView(
-            imagePath: ImageConstant.imgDownload2,
-            height: 37.v,
-            width: 47.h,
-            alignment: Alignment.bottomLeft,
-          )
         ],
       ),
     );
@@ -190,11 +182,11 @@ class AndroidLargeeeSixScreen extends StatelessWidget {
     return Align(
       alignment: Alignment.centerRight,
       child: Padding(
-        padding: EdgeInsets.only(right: 21.h),
+        padding: EdgeInsets.only(right: 25.h),
         child: CustomOutlinedButton(
-          width: 106.h,
+          width: 150.h, // Reduced width by 6 pixels
           text: "Submit",
-          buttonStyle: CustomButtonStyles.fillBlack, // Updated button style
+          buttonStyle: CustomButtonStyles.fillBlack,
           buttonTextStyle: theme.textTheme.titleLarge!,
           alignment: Alignment.centerRight,
         ),
