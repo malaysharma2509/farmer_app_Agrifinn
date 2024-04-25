@@ -4,6 +4,7 @@ import 'package:kartikay_s_application7/widgets/custom_elevated_button.dart';
 import '../android_large_four_draweritem/android_large_four_draweritem.dart';
 import 'widgets/androidlargesix_item_widget.dart';
 import 'package:kartikay_s_application7/core/app_export.dart';
+import 'package:kartikay_s_application7/presentation/android_large_eight_screen/android_large_eight_screen.dart';
 
 class AndroidLargeSixScreen extends StatelessWidget {
   AndroidLargeSixScreen({Key? key}) : super(key: key);
@@ -199,7 +200,7 @@ class AndroidLargeSixScreen extends StatelessWidget {
             '/page2',
             '/page3',
             '/page4',
-            '/page5',
+            '/android_large_eight_screen',
             '/android_large_three_screen',
           ];
 

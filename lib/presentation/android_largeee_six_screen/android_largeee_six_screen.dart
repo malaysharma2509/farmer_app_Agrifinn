@@ -1,25 +1,20 @@
 import 'package:flutter/material.dart';
 import '../../core/app_export.dart';
 import '../../widgets/custom_outlined_button.dart';
-import '../../widgets/custom_text_form_field.dart'; // ignore_for_file: must_be_immutable
+import '../../widgets/custom_text_form_field.dart';
 
 // ignore_for_file: must_be_immutable
-class AndroidLargeSixScreen extends StatelessWidget {
-  AndroidLargeSixScreen({Key? key})
+class AndroidLargeeeSixScreen extends StatelessWidget {
+  AndroidLargeeeSixScreen({Key? key})
       : super(
-          key: key,
-        );
+    key: key,
+  );
 
   TextEditingController userNameController = TextEditingController();
-
   TextEditingController farmerRegistrationController = TextEditingController();
-
   TextEditingController annualIncomeController = TextEditingController();
-
   TextEditingController taxIdentificationController = TextEditingController();
-
   TextEditingController voterIdCardOneController = TextEditingController();
-
   TextEditingController driversLicenseController = TextEditingController();
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -43,17 +38,17 @@ class AndroidLargeSixScreen extends StatelessWidget {
                   children: [
                     _buildStackDownloadTwenty(context),
                     _buildUserName(context),
-                    SizedBox(height: 43.v),
+                    SizedBox(height: 15.v), // Reduced space between adjacent text fields
                     _buildFarmerRegistration(context),
-                    SizedBox(height: 54.v),
-                    _buildAnnualIncome(context),
-                    SizedBox(height: 54.v),
-                    _buildTaxIdentification(context),
-                    SizedBox(height: 62.v),
-                    _buildVoterIdCardOne(context),
-                    SizedBox(height: 60.v),
-                    _buildDriversLicense(context),
                     SizedBox(height: 15.v),
+                    _buildAnnualIncome(context),
+                    SizedBox(height: 15.v),
+                    _buildTaxIdentification(context),
+                    SizedBox(height: 15.v),
+                    _buildVoterIdCardOne(context),
+                    SizedBox(height: 15.v),
+                    _buildDriversLicense(context),
+                    SizedBox(height: 30.v), // Added some space for the submit button
                     _buildSubmit(context),
                     SizedBox(height: 8.v)
                   ],
@@ -192,12 +187,18 @@ class AndroidLargeSixScreen extends StatelessWidget {
 
   /// Section Widget
   Widget _buildSubmit(BuildContext context) {
-    return CustomOutlinedButton(
-      width: 106.h,
-      text: "Submit",
-      margin: EdgeInsets.only(right: 21.h),
-      buttonTextStyle: theme.textTheme.titleLarge!,
+    return Align(
       alignment: Alignment.centerRight,
+      child: Padding(
+        padding: EdgeInsets.only(right: 21.h),
+        child: CustomOutlinedButton(
+          width: 106.h,
+          text: "Submit",
+          buttonStyle: CustomButtonStyles.fillBlack, // Updated button style
+          buttonTextStyle: theme.textTheme.titleLarge!,
+          alignment: Alignment.centerRight,
+        ),
+      ),
     );
   }
 }

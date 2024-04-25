@@ -25,6 +25,7 @@ class AppDecoration {
         color: theme.colorScheme.primary,
       );
 
+
   // Outline decorations
   static BoxDecoration get outlinePrimaryContainer => BoxDecoration(
         color: appTheme.gray5001,
@@ -77,6 +78,7 @@ class BorderRadiusStyle {
   static BorderRadius get roundedBorder65 => BorderRadius.circular(
         65.h,
       );
+
 }
 
 // Comment/Uncomment the below code based on your Flutter SDK version.
