@@ -199,7 +199,7 @@ class AndroidLargeSixScreen extends StatelessWidget {
             '/lender_condition_screen',
             '/my_lenders',
             '/page3',
-            '/page4',
+            '/transaction',
             '/android_large_eight_screen',
             '/android_large_three_screen',
           ];
