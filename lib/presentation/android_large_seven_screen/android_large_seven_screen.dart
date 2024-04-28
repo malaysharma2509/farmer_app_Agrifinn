@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../core/app_export.dart';
 import '../../widgets/custom_outlined_button.dart';
 import '../../widgets/custom_text_form_field.dart';
@@ -6,13 +7,15 @@ import '../../widgets/custom_text_form_field.dart';
 class AndroidLargeSevenScreen extends StatelessWidget {
   AndroidLargeSevenScreen({Key? key}) : super(key: key);
 
+  final _firestore = FirebaseFirestore.instance;
+
   TextEditingController nameController = TextEditingController();
   TextEditingController amountController = TextEditingController();
   TextEditingController tenureValueOneController = TextEditingController();
   TextEditingController startDateController = TextEditingController();
   TextEditingController endDateController = TextEditingController();
   TextEditingController interestRateController = TextEditingController();
-  TextEditingController reasonController = TextEditingController(); // New controller for reason
+  TextEditingController reasonController = TextEditingController();
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -31,10 +34,10 @@ class AndroidLargeSevenScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  SizedBox(height: 18.v), // Adjusted height
+                  SizedBox(height: 18.v),
                   _buildLoanConditions(context),
                   SizedBox(height: 23.v),
-                  CustomTextFormField( // Adjusted width
+                  CustomTextFormField(
                     controller: nameController,
                     hintText: "Farmer's Name",
                     contentPadding: EdgeInsets.symmetric(
@@ -43,44 +46,47 @@ class AndroidLargeSevenScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 23.v),
-                  CustomTextFormField( // Adjusted width
+                  CustomTextFormField(
                     controller: amountController,
                     hintText: "Total Amount",
                   ),
                   SizedBox(height: 23.v),
-                  CustomTextFormField( // Adjusted width
+                  CustomTextFormField(
                     controller: tenureValueOneController,
                     hintText: "Tenure",
                     textInputAction: TextInputAction.done,
                   ),
                   SizedBox(height: 23.v),
-                  CustomTextFormField( // Adjusted width
+                  CustomTextFormField(
                     controller: startDateController,
                     hintText: "Start Date",
                   ),
                   SizedBox(height: 23.v),
-                  CustomTextFormField( // Adjusted width
+                  CustomTextFormField(
                     controller: endDateController,
                     hintText: "End Date",
                   ),
                   SizedBox(height: 23.v),
-                  CustomTextFormField( // Adjusted width
+                  CustomTextFormField(
                     controller: interestRateController,
                     hintText: "Interest Rate",
                   ),
                   SizedBox(height: 23.v),
-                  CustomTextFormField( // Adjusted width
+                  CustomTextFormField(
                     controller: reasonController,
-                    hintText: "Reason for Issuing Loan", // New text field
+                    hintText: "Reason for Issuing Loan",
                   ),
                   SizedBox(height: 23.v),
                   SizedBox(
-                    width: double.infinity, // Set width to fill available space
+                    width: double.infinity,
                     child: CustomOutlinedButton(
                       text: "Submit",
                       buttonStyle: CustomButtonStyles.fillPrimary,
                       buttonTextStyle: theme.textTheme.titleLarge!,
                       alignment: Alignment.center,
+                      onPressed: () {
+                        _submitFormData();
+                      },
                     ),
                   ),
                   SizedBox(height: 5.v),
@@ -98,7 +104,7 @@ class AndroidLargeSevenScreen extends StatelessWidget {
       width: double.maxFinite,
       padding: EdgeInsets.symmetric(
         horizontal: 49.h,
-        vertical: 0, // Removed vertical padding
+        vertical: 0,
       ),
       decoration: AppDecoration.fillLime800.copyWith(
         borderRadius: BorderRadiusStyle.roundedBorder40,
@@ -113,5 +119,30 @@ class AndroidLargeSevenScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _submitFormData() {
+    Map<String, dynamic> formData = {
+      'farmer_name': nameController.text,
+      'total_amount': amountController.text,
+      'tenure': tenureValueOneController.text,
+      'start_date': startDateController.text,
+      'end_date': endDateController.text,
+      'interest_rate': interestRateController.text,
+      'reason': reasonController.text,
+    };
+
+    _firestore.collection('farmer_conditions').add(formData).then((_) {
+      print("Data sent successfully");
+      nameController.clear();
+      amountController.clear();
+      tenureValueOneController.clear();
+      startDateController.clear();
+      endDateController.clear();
+      interestRateController.clear();
+      reasonController.clear();
+    }).catchError((error) {
+      print('Error submitting form data: $error');
+    });
   }
 }

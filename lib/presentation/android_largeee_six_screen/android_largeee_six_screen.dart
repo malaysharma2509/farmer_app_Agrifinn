@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../core/app_export.dart';
 import '../../widgets/custom_outlined_button.dart';
 import '../../widgets/custom_text_form_field.dart';
@@ -6,6 +7,8 @@ import '../../widgets/custom_text_form_field.dart';
 // ignore_for_file: must_be_immutable
 class AndroidLargeeeSixScreen extends StatelessWidget {
   AndroidLargeeeSixScreen({Key? key}) : super(key: key);
+
+  final _firestore = FirebaseFirestore.instance;
 
   TextEditingController userNameController = TextEditingController();
   TextEditingController farmerRegistrationController = TextEditingController();
@@ -59,7 +62,6 @@ class AndroidLargeeeSixScreen extends StatelessWidget {
     );
   }
 
-  /// Section Widget
   Widget _buildStackDownloadTwenty(BuildContext context) {
     return SizedBox(
       height: 135.v,
@@ -109,7 +111,6 @@ class AndroidLargeeeSixScreen extends StatelessWidget {
     );
   }
 
-  /// Section Widget
   Widget _buildUserName(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 21.h),
@@ -120,7 +121,6 @@ class AndroidLargeeeSixScreen extends StatelessWidget {
     );
   }
 
-  /// Section Widget
   Widget _buildFarmerRegistration(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 21.h),
@@ -131,7 +131,6 @@ class AndroidLargeeeSixScreen extends StatelessWidget {
     );
   }
 
-  /// Section Widget
   Widget _buildAnnualIncome(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 21.h),
@@ -142,7 +141,6 @@ class AndroidLargeeeSixScreen extends StatelessWidget {
     );
   }
 
-  /// Section Widget
   Widget _buildTaxIdentification(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 21.h),
@@ -154,7 +152,6 @@ class AndroidLargeeeSixScreen extends StatelessWidget {
     );
   }
 
-  /// Section Widget
   Widget _buildVoterIdCardOne(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 21.h),
@@ -165,7 +162,6 @@ class AndroidLargeeeSixScreen extends StatelessWidget {
     );
   }
 
-  /// Section Widget
   Widget _buildDriversLicense(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 21.h),
@@ -177,20 +173,45 @@ class AndroidLargeeeSixScreen extends StatelessWidget {
     );
   }
 
-  /// Section Widget
   Widget _buildSubmit(BuildContext context) {
     return Align(
       alignment: Alignment.centerRight,
       child: Padding(
         padding: EdgeInsets.only(right: 25.h),
         child: CustomOutlinedButton(
-          width: 150.h, // Reduced width by 6 pixels
+          width: 150.h,
           text: "Submit",
           buttonStyle: CustomButtonStyles.fillBlack,
           buttonTextStyle: theme.textTheme.titleLarge!,
           alignment: Alignment.centerRight,
+          onPressed: () {
+            _submitFormData();
+          },
         ),
       ),
     );
+  }
+
+  void _submitFormData() {
+    Map<String, dynamic> formData = {
+      'username': userNameController.text,
+      'farmer_registration_id': farmerRegistrationController.text,
+      'annual_income': annualIncomeController.text,
+      'tax_identification_number': taxIdentificationController.text,
+      'voter_id_card': voterIdCardOneController.text,
+      'drivers_license': driversLicenseController.text,
+    };
+
+    _firestore.collection('farmers_details').add(formData).then((_) {
+      print("Data sent successfully");
+      userNameController.clear();
+      farmerRegistrationController.clear();
+      annualIncomeController.clear();
+      taxIdentificationController.clear();
+      voterIdCardOneController.clear();
+      driversLicenseController.clear();
+    }).catchError((error) {
+      print('Error submitting form data: $error');
+    });
   }
 }
