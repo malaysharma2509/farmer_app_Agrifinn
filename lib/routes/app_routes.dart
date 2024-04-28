@@ -10,6 +10,7 @@ import '../presentation/android_large_five_screen/android_large_five_screen.dart
 import '../presentation/android_large_eight_screen/android_large_eight_screen.dart';
 import '../presentation/android_largeee_six_screen/android_largeee_six_screen.dart';
 import '../presentation/app_navigation_screen/app_navigation_screen.dart';
+import '../presentation/chatbot/chatbot.dart';
 import '../presentation/lender_condition/lender_condition_screen.dart';
 import '../presentation/my_lenders/my_lenders.dart';
 import '../presentation/transaction/transaction.dart';
@@ -30,6 +31,8 @@ class AppRoutes {
   static const String lenderConditionScreen = '/lender_condition_screen';
   static const String myLender = '/my_lenders';// Corrected route name
   static const String transaction = '/transaction';
+  static const String chatbot = '/chatbot';
+
 
   static Map<String, WidgetBuilder> routes = {
     androidLargeThreeScreen: (context) => AndroidLargeThreeScreen(),
@@ -45,6 +48,7 @@ class AppRoutes {
     androidLargeeeSixScreen: (context) => AndroidLargeeeSixScreen(),
     lenderConditionScreen: (context) => LenderConditionsScreen(),
     transaction: (context) => Transaction(),
+    chatbot: (context)  => ChatScreen(),
     myLender: (context) => TransactionLenderScreen(),// Corrected route name
   };
 }

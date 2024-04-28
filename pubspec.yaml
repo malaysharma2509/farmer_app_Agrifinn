@@ -9,6 +9,7 @@ dependencies:
   firebase_core: ^2.27.0
   firebase_auth: ^4.5.0
   cloud_firestore: ^4.15.8
+  google_generative_ai:
 
 
   cached_network_image: ^3.3.0
