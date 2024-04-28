@@ -11,6 +11,7 @@ import '../presentation/android_large_eight_screen/android_large_eight_screen.da
 import '../presentation/android_largeee_six_screen/android_largeee_six_screen.dart';
 import '../presentation/app_navigation_screen/app_navigation_screen.dart';
 import '../presentation/lender_condition/lender_condition_screen.dart';
+import '../presentation/my_lenders/my_lenders.dart';
 
 
 class AppRoutes {
@@ -25,7 +26,9 @@ class AppRoutes {
   static const String androidLargeEightScreen = '/android_large_eight_screen';
   static const String androidLargeSevenScreen = '/android_large_seven_screen';
   static const String androidLargeeeSixScreen = '/android_largeee_six_screen';
-  static const String lenderConditionScreen = '/lender_condition_screen'; // Corrected route name
+  static const String lenderConditionScreen = '/lender_condition_screen';
+  static const String myLender = '/my_lenders';// Corrected route name
+  static const String transaction = '/transaction';
 
   static Map<String, WidgetBuilder> routes = {
     androidLargeThreeScreen: (context) => AndroidLargeThreeScreen(),
@@ -39,6 +42,8 @@ class AppRoutes {
     androidLargeEightScreen: (context) => AndroidLargeEightScreen(),
     androidLargeSevenScreen: (context) => AndroidLargeSevenScreen(),
     androidLargeeeSixScreen: (context) => AndroidLargeeeSixScreen(),
-    lenderConditionScreen: (context) => LenderConditionsScreen(), // Corrected route name
+    lenderConditionScreen: (context) => LenderConditionsScreen(),
+    transaction: (context) => Transaction(),
+    myLender: (context) => TransactionLenderScreen(),// Corrected route name
   };
 }
