@@ -175,7 +175,7 @@ class AndroidLargeSixScreen extends StatelessWidget {
     List<String> texts = [
       "Available Lenders",
       "My Lenders",
-      "Booking History",
+      "Chatbot",
       "Transaction History",
       "Smart Analysis",
       "Verified Document",
@@ -198,7 +198,7 @@ class AndroidLargeSixScreen extends StatelessWidget {
           List<String> routes = [
             '/lender_condition_screen',
             '/my_lenders',
-            '/page3',
+            '/chatbot',
             '/transaction',
             '/android_large_eight_screen',
             '/android_large_three_screen',
