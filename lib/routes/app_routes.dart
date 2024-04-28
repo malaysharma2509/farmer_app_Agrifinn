@@ -12,6 +12,7 @@ import '../presentation/android_largeee_six_screen/android_largeee_six_screen.da
 import '../presentation/app_navigation_screen/app_navigation_screen.dart';
 import '../presentation/lender_condition/lender_condition_screen.dart';
 import '../presentation/my_lenders/my_lenders.dart';
+import '../presentation/transaction/transaction.dart';
 
 
 class AppRoutes {
