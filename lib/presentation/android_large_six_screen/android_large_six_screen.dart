@@ -197,7 +197,7 @@ class AndroidLargeSixScreen extends StatelessWidget {
           // Example routes
           List<String> routes = [
             '/page1',
-            '/page2',
+            '/lender_condition_screen',
             '/page3',
             '/page4',
             '/android_large_eight_screen',
