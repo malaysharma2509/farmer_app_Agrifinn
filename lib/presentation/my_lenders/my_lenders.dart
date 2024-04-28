@@ -45,14 +45,14 @@ class _TransactionLenderScreenState extends State<TransactionLenderScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: Card(
                       child: ListTile(
-                        title: Text(data['yourname'] ?? 'Unknown'),
+                        title: Text(data['yourName'] ?? 'Unknown'),
                         subtitle: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text('Amount: ${data['amount'] ?? '0'}'),
                             Text('Interest: ${data['interest'] ?? '0'}%'),
-                            Text('Start Date: ${data['startdate'] ?? 'Unknown'}'),
-                            Text('End Date: ${data['date'] ?? 'Unknown'}'),
+                            Text('Start Date: ${data['startDate'] ?? 'Unknown'}'),
+                            Text('End Date: ${data['endDate'] ?? 'Unknown'}'),
                           ],
                         ),
                       ),
